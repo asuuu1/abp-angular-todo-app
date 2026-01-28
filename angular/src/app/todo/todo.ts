@@ -10,6 +10,7 @@ import { TodoService } from '../proxy/todo.service';
   templateUrl: './todo.html',
   styleUrls: ['./todo.scss']
 })
+
 export class TodoComponent implements OnInit {
 
   todos: any[] = [];
@@ -41,4 +42,9 @@ export class TodoComponent implements OnInit {
       this.loadTodos();
     });
   }
+
+  refreshTodos() {
+  this.todos = [];
+}
+
 }

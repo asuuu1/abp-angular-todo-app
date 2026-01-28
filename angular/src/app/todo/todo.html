@@ -1,15 +1,24 @@
-<h2>Todo List</h2>
+<div class="todo-container">
+  <h2>📝 My Daily Todo</h2>
 
-<input
-  type="text"
-  [(ngModel)]="newTodoText"
-  placeholder="Enter new todo"
-/>
-<button (click)="addTodo()">Add</button>
+  <div class="todo-input">
+    <input
+      type="text"
+      [(ngModel)]="newTodoText"
+      placeholder="What do you want to do today?"
+    />
+    <button class="add-btn" (click)="addTodo()">Add</button>
+    <button class="refresh-btn" (click)="refreshTodos()">Refresh</button>
+  </div>
 
-<ul>
-  <li *ngFor="let todo of todos">
-    {{ todo.text }}
-    <button (click)="deleteTodo(todo.id)">Delete</button>
-  </li>
-</ul>
+  <ul *ngIf="todos.length > 0; else emptyState">
+    <li *ngFor="let todo of todos">
+      <span>{{ todo.text }}</span>
+      <button class="delete-btn" (click)="deleteTodo(todo.id)">✖</button>
+    </li>
+  </ul>
+
+  <ng-template #emptyState>
+    <p class="empty">No tasks yet. Add one ☝️</p>
+  </ng-template>
+</div>
